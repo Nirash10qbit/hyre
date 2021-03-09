@@ -30,8 +30,12 @@
       >
         <template #button-content>
           <div class="d-sm-flex d-none user-nav">
-            <p class="user-name font-weight-bolder mb-0">
+            <p
+              v-if="currentUser"
+              class="user-name font-weight-bolder mb-0"
+            >
               {{ currentUser.user.name }}
+
             </p>
             <span class="user-status">Online</span>
           </div>

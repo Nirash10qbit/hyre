@@ -3,7 +3,6 @@
 
     <ejs-schedule
       height="650px"
-      :drag="onItemDrag"
       timezone="Asia/Kolkata"
       :current-view="currentView"
       :group="group"
@@ -43,36 +42,6 @@
     </ejs-schedule>
 
   </div>
-<!--  <div class="schedule-vue-sample">-->
-<!--    <div class="col-md-12 control-section">-->
-<!--      <div class="content-wrapper">-->
-<!--        <ejs-schedule-->
-<!--          id="Schedule"-->
-<!--          height="650px"-->
-<!--          :selected-date="selectedDate"-->
-<!--          :current-view="currentView"-->
-<!--          :event-settings="eventSettings"-->
-<!--          :group="group"-->
-<!--        >-->
-<!--          <e-views>-->
-<!--            <e-view option="TimelineDay" />-->
-<!--            <e-view option="TimelineWeek" />-->
-<!--            <e-view option="TimelineWorkWeek" />-->
-<!--            <e-view option="TimelineMonth" />-->
-<!--            <e-view option="Agenda" />-->
-<!--          </e-views>-->
-  <!--          <e-resources>-->
-  <!--            <e-resource field='ProjectId' title='Choose Project' name='Projects' :dataSource='projectResourceDataSource' textField='text'-->
-  <!--                        idField='id' colorField='color'>-->
-  <!--            </e-resource>-->
-  <!--            <e-resource field='TaskId' title='Employee' name='Employees' :dataSource='employeeDataSource' :allowMultiple='allowMultiple'-->
-  <!--                        textField='text' idField='id' groupIDField='groupId' colorField='color'>-->
-  <!--            </e-resource>-->
-  <!--          </e-resources>-->
-<!--        </ejs-schedule>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 
 </template>
 
@@ -83,29 +52,45 @@ import {
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { extend } from '@syncfusion/ej2-base'
 import Vue from 'vue'
-import header from './header.vue'
 
 // eslint-disable-next-line no-unused-vars
-const headerTemplateVue = Vue.component('header-template', {
-  data() {
-    return {
-      data: {},
-    }
-  },
-  template: '<div class="profile-container"><div class="profile-image"></div><div class="content-wrap">'
-          + '<div class="name">Nancy</div><div class="destination">Product Manager</div><div class="status"> '
-          + '<div class="status-icon"></div>Online</div></div></div>',
-})
 
-export default {
+// const resourceHeaderVue = Vue.component('resource-headerTemplate', {
+//   data() {
+//     return {
+//       data: {},
+//     }
+//   },
+//   computed: {
+//     getImage() {
+//       return 'https://picsum.photos/200'
+//     },
+//   },
+//   methods: {
+//     getEmployeeName(data) {
+//       const value = JSON.parse(JSON.stringify(data))
+//       return (value.resourceData) ? value.resourceData[value.resource.textField] : value.resourceName
+//     },
+//     getEmployeeDesignation(data) {
+//       const value = JSON.parse(JSON.stringify(data))
+//       return value.resourceData.Designation
+//     },
+//   },
+//   template: '<div></div>',
+// })
+
+export default Vue.extend({
   name: 'Index',
   comments: {
     SchedulePlugin,
     extend,
-    header,
+
   },
   data() {
     return {
+      // resourceHeaderTemplate() {
+      //   return { template: resourceHeaderVue }
+      // },
       timezoneData: [
         { timezone: 'America/New_York', text: '(UTC-05:00) Eastern Time' },
         { timezone: 'UTC', text: 'UTC' },
@@ -197,7 +182,7 @@ export default {
     },
   },
 
-}
+})
 
 </script>
 
@@ -208,5 +193,38 @@ export default {
 
   .schedule-vue-sample .e-schedule .e-agenda-view .e-resource-column {
     width: 100px;
+  }
+  .schedule-vue-sample .block-events.e-schedule .template-wrap {
+    width: 100%;
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .e-vertical-view .e-resource-cells {
+    height: 58px;
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .e-timeline-view .e-resource-left-td,
+  .schedule-vue-sample .block-events.e-schedule .e-timeline-month-view .e-resource-left-td {
+    width: 170px;
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .e-resource-cells.e-child-node .employee-category,
+  .schedule-vue-sample .block-events.e-schedule .e-resource-cells.e-child-node .employee-name {
+    padding: 5px
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .employee-image {
+    width: 45px;
+    height: 40px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .employee-name {
+    font-size: 13px;
+  }
+
+  .schedule-vue-sample .block-events.e-schedule .employee-designation {
+    font-size: 10px;
   }
 </style>

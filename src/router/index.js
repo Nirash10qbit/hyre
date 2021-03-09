@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import dashboardRoute from './modules/dashboard_route'
 // import errorRoute from './modules/error_route'
-// import loginRoute from './modules/login_route'
+import loginRoute from './modules/login_route'
 // import patientRoute from './modules/patient_route'
 // import itemRoute from './modules/item_route'
 // import unitRoute from './modules/unit_route'
@@ -19,11 +19,12 @@ const router = new VueRouter({
   },
   routes: [
     ...schedulerRoute,
+    ...loginRoute,
     // ...dashboardRoute,
     // ...patientRoute,
     // ...itemRoute,
     // ...unitRoute,
-    // ...loginRoute,
+
     // ...errorRoute,
     // ...membersRoute,
   ],
